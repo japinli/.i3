@@ -10,7 +10,8 @@ Installation
 
 Requirements:
 
-* i3 `>= 4.14` running on ubuntu
+* i3 `>= 4.14` - running on ubuntu
+* pcmanfm - browsing files
 
 To install, run the following from your terminal:
 
