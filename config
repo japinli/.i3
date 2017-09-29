@@ -86,7 +86,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit \
+shortcut. Do you really want to exit i3? This will end your X session.' -b \
+ 'Yes, exit i3' 'i3-msg exit'"
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
@@ -117,17 +119,18 @@ bindsym $mod+r mode "resize"
 # Start i3bar to dispaly a workspace bar (plus the system information
 # i3status finds out, if available)
 bar {
+    mode           hide
     position       top
-    hidden_state   hide
     status_command i3status
 }
 
 # Lanuch programs
-set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome
+set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [wechat]
 
 mode "$mode_launcher" {
      bindsym f      exec firefox,          mode "default"
      bindsym g      exec google-chrome,    mode "default"
+     bindsym w      exec wechat,           mode "default"
 
      # back to normal: Enter of Escape
      bindsym Return mode "default"
@@ -139,10 +142,11 @@ bindsym $mod+o mode "$mode_launcher"
 # Add a small delay to prevent possible race conditions with suspend
 set $Locker i3lock && sleep 1
 
-set $mode_system System: [l]ock [r]eboot [p]oweroff
+set $mode_system System: [l]ock l[o]gout [r]eboot [p]oweroff
 mode "$mode_system" {
      bindsym l      exec --no-startup-id $Locker,               mode "default"
      bindsym r      exec --no-startup-id systemctl reboot,      mode "default"
+     bindsym o      exit --no-startup-id i3msg exit,            mode "default"
      bindsym p      exec --no-startup-id systemctl poweroff -i, mode "default"
 
      # back to normal: Enter of Escape
@@ -151,3 +155,11 @@ mode "$mode_system" {
 }
 
 bindsym $mod+Delete mode "$mode_system"
+
+# Autostart
+assign [class="electronic-wechat"] 3
+for_window [class="electronic-wechat"] floating enable
+
+exec --no-startup-id i3-msg 'workspace 1; layout tabbed; exec google-chrome'
+exec --no-startup-id i3-msg 'workspace 2; exec gnome-terminal -e "$HOME/.i3/bin/ibis-tmux"'
+exec --no-startup-id nm-applet

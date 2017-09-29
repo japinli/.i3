@@ -12,6 +12,8 @@ Requirements:
 
 * i3 `>= 4.14` - running on ubuntu
 * pcmanfm - browsing files
+* nm-applet - management network
+* electronic-wechat
 
 To install, run the following from your terminal:
 
