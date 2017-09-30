@@ -125,7 +125,7 @@ bar {
 }
 
 # Lanuch programs
-set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [wechat]
+set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [w]echat
 
 mode "$mode_launcher" {
      bindsym f      exec firefox,          mode "default"
