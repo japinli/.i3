@@ -34,8 +34,8 @@ bindsym $mod+Shift+k     move up
 bindsym $mod+Shift+l     move right
 
 # Split orientation
-bindsym $mod+Shift+v     split h
-bindsym $mod+v           split v
+bindsym $mod+v           split h
+bindsym $mod+shift+v     split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f           fullscreen toggle
@@ -125,7 +125,7 @@ bar {
 }
 
 # Lanuch programs
-set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [wechat]
+set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [w]echat
 
 mode "$mode_launcher" {
      bindsym f      exec firefox,          mode "default"
@@ -158,8 +158,12 @@ bindsym $mod+Delete mode "$mode_system"
 
 # Autostart
 assign [class="electronic-wechat"] 3
-for_window [class="electronic-wechat"] floating enable
+assign [class="(?i)thunderbird"] 3
+assign [class="(?i)xpad"] 3
+#for_window [class="electronic-wechat"] floating enable
+#for_window [class="(?i)thunderbird"] resize set 150
 
+exec_always --no-startup-id feh --bg-scale $HOME/.i3/backgrounds/why-linux.jpg
 exec --no-startup-id i3-msg 'workspace 1; layout tabbed; exec google-chrome'
 exec --no-startup-id i3-msg 'workspace 2; exec gnome-terminal -e "$HOME/.i3/bin/ibis-tmux"'
 exec --no-startup-id nm-applet
