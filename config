@@ -125,12 +125,13 @@ bar {
 }
 
 # Lanuch programs
-set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [w]echat
+set $mode_launcher Lanuch: [f]irefox [g]oogle-chrome [w]echat  [p]cmanfm
 
 mode "$mode_launcher" {
      bindsym f      exec firefox,          mode "default"
      bindsym g      exec google-chrome,    mode "default"
      bindsym w      exec wechat,           mode "default"
+     bindsym p      exec pcmanfm,          mode "default"
 
      # back to normal: Enter of Escape
      bindsym Return mode "default"

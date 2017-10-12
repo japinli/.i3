@@ -13,7 +13,8 @@ Requirements:
 * i3 `>= 4.14` - running on ubuntu
 * pcmanfm - browsing files
 * nm-applet - management network
-* electronic-wechat
+* electronic-wechat - weixin chat program
+* feh - setting backgrounds
 
 To install, run the following from your terminal:
 
